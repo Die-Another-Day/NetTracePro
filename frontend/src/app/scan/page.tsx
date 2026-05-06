@@ -12,8 +12,10 @@ import { ResultCharts } from "../../components/ResultCharts";
 import { HopTable } from "../../components/HopTable";
 import { GeoMap } from "../../components/GeoMap";
 import { ActionBar } from "../../components/ActionBar";
-import { postFullScan, postProbe, postTraceroute } from "@/lib/api";
-import type { ScanPayload, ScanResponse } from "@/lib/types";
+
+
+import { postFullScan, postProbe, postTraceroute } from "../../lib/api";
+import type { ScanPayload, ScanResponse } from "../../lib/types";
 
 const initialResponse: ScanResponse = {
   target: "",
