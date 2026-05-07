@@ -1,7 +1,7 @@
 "use client";
 
 import { Bar, BarChart, CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
-import type { HopInfo } from "@/lib/types";
+import type { HopInfo } from "../..//lib/types";
 
 interface ResultChartsProps {
   tracerouteData: HopInfo[];
