@@ -1,4 +1,4 @@
-import type { HopInfo } from "@/lib/types";
+import type { HopInfo } from "../../lib/types";
 
 interface HopTableProps {
   data: HopInfo[];
