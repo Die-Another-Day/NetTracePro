@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import type { ScanPayload } from "@/lib/types";
+import type { ScanPayload } from "../../lib/types";
 
 const scanOptions = [
   { value: "probe", label: "Probe" },
