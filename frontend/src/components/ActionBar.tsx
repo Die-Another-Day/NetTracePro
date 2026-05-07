@@ -1,7 +1,7 @@
 "use client";
 
 import { Copy, Download } from "lucide-react";
-import type { ScanResponse } from "@/lib/types";
+import type { ScanResponse } from "../../lib/types";
 
 interface ActionBarProps {
   data: ScanResponse;
