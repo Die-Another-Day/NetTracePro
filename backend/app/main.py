@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.api.routes import router
 from app.utils.logger import configure_logging
 
+
 configure_logging()
 
 app = FastAPI(
@@ -13,9 +14,11 @@ app = FastAPI(
 
 app.include_router(router, prefix="/api")
 
-app.add_middleware(
+aapp.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "https://net-trace-pro.vercel.app",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
