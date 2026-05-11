@@ -98,80 +98,96 @@ class ScanService:
     # =========================
 
     def _demo_probe_response(self, target: str, count: int) -> ScanResponse:
-        results = [
-            ProbeResult(
-                sequence=i + 1,
-                ttl=64,
-                rtt_ms=round(18.5 + (i * 4.2), 2),
-                source=target,
-                status="reachable"
-            )
-            for i in range(count)
-        ]
-
-        return ScanResponse(
-            target=target,
-            probe_results=results,
-            traceroute_results=[],
-            summary={
-                "average_rtt_ms": self._average_rtt([r.rtt_ms for r in results]),
-                "probes_sent": count,
-                "mode": "demo",
-                "message": "Cloud-hosted demo mode enabled"
-            }
+    results = [
+        ProbeResult(
+            sequence=i + 1,
+            ttl=64,
+            rtt_ms=round(18.5 + (i * 4.2), 2),
+            source=target,
+            success=True,
+            icmp_type=0,
+            icmp_code=0,
+            message="Reply received",
+            status="reachable"
         )
+        for i in range(count)
+    ]
+
+    return ScanResponse(
+        target=target,
+        probe_results=results,
+        traceroute_results=[],
+        summary={
+            "average_rtt_ms": self._average_rtt([r.rtt_ms for r in results]),
+            "probes_sent": count,
+            "mode": "demo",
+            "message": "Cloud-hosted demo mode enabled"
+        }
+    )
 
     def _demo_traceroute_response(self, target: str, max_ttl: int) -> ScanResponse:
-        hops = [
-            HopInfo(
-                ttl=1,
-                source="192.168.1.1",
-                hostname="local-gateway",
-                rtt_ms=3.5,
-                city="Local Gateway",
-                country="Private Network",
-                status="reachable"
-            ),
-            HopInfo(
-                ttl=2,
-                source="10.10.0.1",
-                hostname="isp-edge",
-                rtt_ms=14.8,
-                city="Mumbai",
-                country="India",
-                status="reachable"
-            ),
-            HopInfo(
-                ttl=3,
-                source="172.16.0.1",
-                hostname="core-router",
-                rtt_ms=27.3,
-                city="Singapore",
-                country="Singapore",
-                status="reachable"
-            ),
-            HopInfo(
-                ttl=4,
-                source=target,
-                hostname="destination",
-                rtt_ms=42.1,
-                city="Mountain View",
-                country="United States",
-                status="destination"
-            ),
-        ]
+    hops = [
+        HopInfo(
+            ttl=1,
+            source="192.168.1.1",
+            hostname="local-gateway",
+            rtt_ms=3.5,
+            city="Local Gateway",
+            country="Private Network",
+            status="reachable",
+            icmp_type=11,
+            icmp_code=0,
+            asn="AS_LOCAL"
+        ),
+        HopInfo(
+            ttl=2,
+            source="10.10.0.1",
+            hostname="isp-edge",
+            rtt_ms=14.8,
+            city="Mumbai",
+            country="India",
+            status="reachable",
+            icmp_type=11,
+            icmp_code=0,
+            asn="AS9498"
+        ),
+        HopInfo(
+            ttl=3,
+            source="172.16.0.1",
+            hostname="core-router",
+            rtt_ms=27.3,
+            city="Singapore",
+            country="Singapore",
+            status="reachable",
+            icmp_type=11,
+            icmp_code=0,
+            asn="AS7473"
+        ),
+        HopInfo(
+            ttl=4,
+            source=target,
+            hostname="destination",
+            rtt_ms=42.1,
+            city="Mountain View",
+            country="United States",
+            status="destination",
+            icmp_type=0,
+            icmp_code=0,
+            asn="AS15169"
+        ),
+    ]
 
-        return ScanResponse(
-            target=target,
-            probe_results=[],
-            traceroute_results=hops,
-            summary={
-                "hops": len(hops),
-                "max_ttl": max_ttl,
-                "mode": "demo",
-                "message": "Cloud-hosted demo mode enabled"
-            }
-        )
+    return ScanResponse(
+        target=target,
+        probe_results=[],
+        traceroute_results=hops,
+        summary={
+            "hops": len(hops),
+            "max_ttl": max_ttl,
+            "mode": "demo",
+            "message": "Cloud-hosted demo mode enabled"
+        }
+    )
 
     def _demo_full_scan_response(self, target: str, count: int, max_ttl: int) -> ScanResponse:
         probe_response = self._demo_probe_response(target, count)
