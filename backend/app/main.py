@@ -14,7 +14,7 @@ app = FastAPI(
 
 app.include_router(router, prefix="/api")
 
-aapp.add_middleware(
+app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "https://net-trace-pro.vercel.app",
