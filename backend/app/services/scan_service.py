@@ -97,8 +97,8 @@ class ScanService:
     # DEMO FALLBACK RESPONSES
     # =========================
 
-def _demo_probe_response(self, target: str, count: int) -> ScanResponse:
-    results = [
+    def _demo_probe_response(self, target: str, count: int) -> ScanResponse:
+        results = [
         ProbeResult(
             sequence=i + 1,
             ttl=64,
@@ -126,8 +126,8 @@ def _demo_probe_response(self, target: str, count: int) -> ScanResponse:
     )
 
 
-def _demo_traceroute_response(self, target: str, max_ttl: int) -> ScanResponse:
-    hops = [
+    def _demo_traceroute_response(self, target: str, max_ttl: int) -> ScanResponse:
+        hops = [
         HopInfo(
             ttl=1,
             source="192.168.1.1",
