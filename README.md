@@ -75,7 +75,15 @@ https://nettracepro.onrender.com/docs
 | Containerization | Docker |
 
 ---
+# ScreenShorts
+<img width="1365" height="648" alt="image" src="https://github.com/user-attachments/assets/6e793f7d-fee4-4eb3-93b3-f80033f92c09" />
 
+<img width="1334" height="626" alt="image" src="https://github.com/user-attachments/assets/863df2d6-89eb-47c8-b34f-d143da777696" />
+
+<img width="1290" height="621" alt="image" src="https://github.com/user-attachments/assets/ca7b157b-3c7b-4794-9eca-11ea0642ab61" />
+
+
+---
 # Project Structure
 
 ```bash
@@ -86,3 +94,20 @@ NetTracePro/
 ├── tests/
 ├── README.md
 └── LICENSE
+
+```
+---
+## Internship Task Mapping
+
+This project was developed as part of the CodeAlpha Cyber Security Internship.
+
+Task Covered:
+- Task 1: Basic Network Sniffer
+
+Implemented Features:
+- ICMP probing
+- Traceroute analysis
+- Route latency visualization
+- Network intelligence dashboard
+- Packet/network monitoring concepts using Scapy
+  ---
