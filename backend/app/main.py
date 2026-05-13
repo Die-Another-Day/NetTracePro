@@ -18,6 +18,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "https://net-trace-pro.vercel.app",
+        "https://sentineltrace.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
